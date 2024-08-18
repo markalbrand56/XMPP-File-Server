@@ -6,9 +6,49 @@ definitions:
       message:
         type: string
     type: object
+  responses.UploadSuccessResponse:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      paths:
+        items:
+          type: string
+        type: array
+    type: object
 info:
   contact: {}
 paths:
+  /files/:directory/:file:
+    get:
+      consumes:
+      - application/json
+      description: Obtiene un archivo de S3
+      parameters:
+      - description: Ruta del archivo
+        in: query
+        name: path
+        required: true
+        type: string
+      produces:
+      - multipart/form-data
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.StandardResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.StandardResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.StandardResponse'
+      summary: Obtiene un archivo de S3
+      tags:
+      - Files
   /files/{directory}:
     post:
       consumes:
@@ -32,7 +72,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/responses.StandardResponse'
+            $ref: '#/definitions/responses.UploadSuccessResponse'
         "400":
           description: Bad Request
           schema:
@@ -44,5 +84,5 @@ paths:
       summary: (Requiere autentificación) Sube un archivo a S3 y lo asocia al usuario
         que lo subió
       tags:
-      - Documents
+      - Files
 swagger: "2.0"

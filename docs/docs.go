@@ -15,6 +15,50 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/files/:directory/:file": {
+            "get": {
+                "description": "Obtiene un archivo de S3",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "multipart/form-data"
+                ],
+                "tags": [
+                    "Files"
+                ],
+                "summary": "Obtiene un archivo de S3",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Ruta del archivo",
+                        "name": "path",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StandardResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StandardResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StandardResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/files/{directory}": {
             "post": {
                 "description": "(Requiere autentificación) Sube un archivo a S3 y lo asocia al usuario que lo subió. Necesita un token de autentificación",
@@ -25,7 +69,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Documents"
+                    "Files"
                 ],
                 "summary": "(Requiere autentificación) Sube un archivo a S3 y lo asocia al usuario que lo subió",
                 "parameters": [
@@ -48,7 +92,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/responses.StandardResponse"
+                            "$ref": "#/definitions/responses.UploadSuccessResponse"
                         }
                     },
                     "400": {
@@ -76,6 +120,23 @@ const docTemplate = `{
                 },
                 "message": {
                     "type": "string"
+                }
+            }
+        },
+        "responses.UploadSuccessResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "paths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         }
