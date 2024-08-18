@@ -9,7 +9,7 @@ import (
 
 var (
 	environmentVariables = []string{
-		"AWS_ACCESS",
+		"AWS_ACCESS_KEY",
 		"AWS_SECRET",
 		"AWS_REGION",
 		"AWS_BUCKET",

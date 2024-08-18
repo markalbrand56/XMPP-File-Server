@@ -1,6 +1,9 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"XMPP-File-Server/internal/controllers"
+	"github.com/gin-gonic/gin"
+)
 
 func Routes(r *gin.Engine) {
 	r.GET("/", func(c *gin.Context) {
@@ -8,4 +11,9 @@ func Routes(r *gin.Engine) {
 			"message": "Service is up and running!",
 		})
 	})
+
+	files := r.Group("/files")
+	{
+		files.POST("/upload/:directory", controllers.Upload)
+	}
 }
