@@ -33,10 +33,10 @@ func main() {
 	r.Use(middlewares.BodySizeLimiter())
 
 	// Swagger
-	docs.SwaggerInfo.Title = "Nomade Global Talent Website Backend"
-	docs.SwaggerInfo.Description = "API para la el backend de la página web de Nomade Global Talent"
+	docs.SwaggerInfo.Title = "File server for XMPP chat"
+	docs.SwaggerInfo.Description = "Simple file server for storing attachments from XMPP chat"
 	docs.SwaggerInfo.Version = "0.1.0"
-	docs.SwaggerInfo.Host = "ngt-markalbrand56.koyeb.app"
+	docs.SwaggerInfo.Host = ""
 	docs.SwaggerInfo.BasePath = "/"
 
 	// Routes
