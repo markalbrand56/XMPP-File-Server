@@ -1,4 +1,48 @@
+definitions:
+  responses.StandardResponse:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
 info:
   contact: {}
-paths: {}
+paths:
+  /files/{directory}:
+    post:
+      consumes:
+      - multipart/form-data
+      description: (Requiere autentificación) Sube un archivo a S3 y lo asocia al
+        usuario que lo subió. Necesita un token de autentificación
+      parameters:
+      - description: Directorio donde se guardará el archivo
+        in: path
+        name: directory
+        required: true
+        type: string
+      - description: Archivo a subir
+        in: formData
+        name: files
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.StandardResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.StandardResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.StandardResponse'
+      summary: (Requiere autentificación) Sube un archivo a S3 y lo asocia al usuario
+        que lo subió
+      tags:
+      - Documents
 swagger: "2.0"

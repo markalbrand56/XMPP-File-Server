@@ -19,12 +19,11 @@ type Form struct {
 // @Tags Documents
 // @Accept  mpfd
 // @Produce  json
-// @Param documentType path string true "Tipo de documento"
+// @Param directory path string true "Directorio donde se guardará el archivo"
 // @Param files formData file true "Archivo a subir"
-// @Success 200 {object} StandardResponse
-// @Failure 400 {object} StandardResponse
-// @Failure 401 {object} StandardResponse
-// @Failure 500 {object} StandardResponse
+// @Success 200 {object} responses.StandardResponse
+// @Failure 400 {object} responses.StandardResponse
+// @Failure 500 {object} responses.StandardResponse
 // @Router /files/{directory} [post]
 func Upload(c *gin.Context) {
 	directory := c.Param("directory")
