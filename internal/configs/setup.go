@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	MAX_UPLOAD_SIZE = 1024 * 1024 * 6 // 6MB
+	MAX_UPLOAD_SIZE = 1024 * 1024 * 10 // 10MB
 )
 
 // connectS3 se conecta a AWS S3

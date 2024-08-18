@@ -3,6 +3,7 @@ package main
 import (
 	"XMPP-File-Server/docs"
 	_ "XMPP-File-Server/internal/configs"
+	middlewares "XMPP-File-Server/internal/middleware"
 	"XMPP-File-Server/internal/routes"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
@@ -29,6 +30,7 @@ func CORS() gin.HandlerFunc {
 func main() {
 	r := gin.Default()
 	r.Use(CORS())
+	r.Use(middlewares.BodySizeLimiter())
 
 	// Swagger
 	docs.SwaggerInfo.Title = "Nomade Global Talent Website Backend"
