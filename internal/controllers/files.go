@@ -64,7 +64,7 @@ func Upload(c *gin.Context) {
 			return
 		}
 
-		paths = append(paths, fmt.Sprintf("%s/files/%s/%s", configs.URL, directory, file.Filename))
+		paths = append(paths, fmt.Sprintf("%s/%s/%s", configs.URL, directory, file.Filename))
 	}
 
 	c.JSON(http.StatusOK, responses.UploadSuccessResponse{

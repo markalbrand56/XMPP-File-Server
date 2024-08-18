@@ -24,11 +24,8 @@ func connectS3() {
 
 	// For some reason, the AWS SDK doesn't like accessing the environment variables directly from the map
 	region := envs["AWS_REGION"]
-	log.Println("Region: ", region)
 	accessKey := envs["AWS_ACCESS_KEY"]
-	log.Println("Access Key: ", accessKey)
 	secret := envs["AWS_SECRET"]
-	log.Println("Secret: ", secret)
 
 	// Create a new S3 client
 	awsSession, err := session.NewSession(&aws.Config{
