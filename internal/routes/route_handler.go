@@ -8,7 +8,8 @@ import (
 func Routes(r *gin.Engine) {
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "Service is up and running!",
+			"message":       "File Service is up and running!",
+			"documentation": "https://redes-markalbrand56.koyeb.app/files/documentation/index.html",
 		})
 	})
 

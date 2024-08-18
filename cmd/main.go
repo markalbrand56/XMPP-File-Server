@@ -36,8 +36,8 @@ func main() {
 	docs.SwaggerInfo.Title = "File server for XMPP chat"
 	docs.SwaggerInfo.Description = "Simple file server for storing attachments from XMPP chat"
 	docs.SwaggerInfo.Version = "0.1.0"
-	docs.SwaggerInfo.Host = ""
-	docs.SwaggerInfo.BasePath = "/"
+	docs.SwaggerInfo.Host = "redes-markalbrand56.koyeb.app"
+	docs.SwaggerInfo.BasePath = "/files"
 
 	// Routes
 	//urlSwagger := ginSwagger.URL("http://localhost:8080/swagger/doc.json")

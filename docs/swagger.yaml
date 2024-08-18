@@ -26,9 +26,14 @@ paths:
       - application/json
       description: Obtiene un archivo de S3
       parameters:
-      - description: Ruta del archivo
-        in: query
-        name: path
+      - description: Directorio donde se encuentra el archivo
+        in: path
+        name: directory
+        required: true
+        type: string
+      - description: Nombre del archivo
+        in: path
+        name: file
         required: true
         type: string
       produces:

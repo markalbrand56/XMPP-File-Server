@@ -82,7 +82,8 @@ func Upload(c *gin.Context) {
 // @Tags Files
 // @Accept  json
 // @Produce  mpfd
-// @Param path query string true "Ruta del archivo"
+// @Param directory path string true "Directorio donde se encuentra el archivo"
+// @Param file path string true "Nombre del archivo"
 // @Success 200 {object} responses.StandardResponse
 // @Failure 400 {object} responses.StandardResponse
 // @Failure 500 {object} responses.StandardResponse

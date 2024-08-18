@@ -31,9 +31,16 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Ruta del archivo",
-                        "name": "path",
-                        "in": "query",
+                        "description": "Directorio donde se encuentra el archivo",
+                        "name": "directory",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Nombre del archivo",
+                        "name": "file",
+                        "in": "path",
                         "required": true
                     }
                 ],
