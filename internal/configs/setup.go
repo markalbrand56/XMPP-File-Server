@@ -11,6 +11,7 @@ import (
 
 const (
 	MAX_UPLOAD_SIZE = 1024 * 1024 * 10 // 10MB
+	URL             = "http://localhost:8080"
 )
 
 // connectS3 se conecta a AWS S3
