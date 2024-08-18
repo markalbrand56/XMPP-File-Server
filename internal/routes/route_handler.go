@@ -12,9 +12,6 @@ func Routes(r *gin.Engine) {
 		})
 	})
 
-	files := r.Group("/files")
-	{
-		files.POST("/:directory", controllers.Upload)
-		files.GET("/:directory/:file", controllers.GetFile)
-	}
+	r.POST("/:directory", controllers.Upload)
+	r.GET("/:directory/:file", controllers.GetFile)
 }

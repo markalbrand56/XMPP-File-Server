@@ -11,8 +11,9 @@ import (
 
 const (
 	MAX_UPLOAD_SIZE = 1024 * 1024 * 10 // 10MB
-	URL             = "http://localhost:8080"
 )
+
+var URL string
 
 // connectS3 se conecta a AWS S3
 func connectS3() {
@@ -41,6 +42,8 @@ func connectS3() {
 	database.Instance = database.NewBucket(newSession, envs["AWS_BUCKET"])
 
 	log.Println("Connected to S3")
+
+	URL = envs["URL"]
 }
 
 func init() {

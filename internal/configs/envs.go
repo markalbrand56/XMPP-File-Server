@@ -13,6 +13,7 @@ var (
 		"AWS_SECRET",
 		"AWS_REGION",
 		"AWS_BUCKET",
+		"URL",
 	}
 )
 
@@ -30,7 +31,7 @@ func LoadAmazonCredentials() (map[string]string, error) {
 		envs[env] = os.Getenv(env)
 
 		if envs[env] == "" {
-			return nil, fmt.Errorf("AWS credentials (%s) not found", env)
+			return nil, fmt.Errorf("credentials (%s) not found", env)
 		}
 	}
 
