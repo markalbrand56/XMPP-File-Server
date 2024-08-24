@@ -20,6 +20,40 @@ definitions:
 info:
   contact: {}
 paths:
+  /{directory}:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Sube un archivo a S3 y lo asocia al usuario que lo subió.
+      parameters:
+      - description: Directorio donde se guardará el archivo
+        in: path
+        name: directory
+        required: true
+        type: string
+      - description: Archivo a subir
+        in: formData
+        name: files
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.UploadSuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.StandardResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.StandardResponse'
+      summary: Sube un archivo a S3 y lo asocia al usuario que lo subió
+      tags:
+      - Files
   /files/:directory/:file:
     get:
       consumes:
@@ -52,42 +86,6 @@ paths:
           schema:
             $ref: '#/definitions/responses.StandardResponse'
       summary: Obtiene un archivo de S3
-      tags:
-      - Files
-  /files/{directory}:
-    post:
-      consumes:
-      - multipart/form-data
-      description: (Requiere autentificación) Sube un archivo a S3 y lo asocia al
-        usuario que lo subió. Necesita un token de autentificación
-      parameters:
-      - description: Directorio donde se guardará el archivo
-        in: path
-        name: directory
-        required: true
-        type: string
-      - description: Archivo a subir
-        in: formData
-        name: files
-        required: true
-        type: file
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/responses.UploadSuccessResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/responses.StandardResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/responses.StandardResponse'
-      summary: (Requiere autentificación) Sube un archivo a S3 y lo asocia al usuario
-        que lo subió
       tags:
       - Files
 swagger: "2.0"

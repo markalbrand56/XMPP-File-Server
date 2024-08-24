@@ -66,9 +66,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/files/{directory}": {
+        "/{directory}": {
             "post": {
-                "description": "(Requiere autentificación) Sube un archivo a S3 y lo asocia al usuario que lo subió. Necesita un token de autentificación",
+                "description": "Sube un archivo a S3 y lo asocia al usuario que lo subió.",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -78,7 +78,7 @@ const docTemplate = `{
                 "tags": [
                     "Files"
                 ],
-                "summary": "(Requiere autentificación) Sube un archivo a S3 y lo asocia al usuario que lo subió",
+                "summary": "Sube un archivo a S3 y lo asocia al usuario que lo subió",
                 "parameters": [
                     {
                         "type": "string",

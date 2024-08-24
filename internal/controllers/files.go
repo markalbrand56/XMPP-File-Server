@@ -15,8 +15,8 @@ type Form struct {
 }
 
 // Upload sube un archivo a S3 y lo asocia al usuario que lo subió
-// @Summary (Requiere autentificación) Sube un archivo a S3 y lo asocia al usuario que lo subió
-// @Description (Requiere autentificación) Sube un archivo a S3 y lo asocia al usuario que lo subió. Necesita un token de autentificación
+// @Summary Sube un archivo a S3 y lo asocia al usuario que lo subió
+// @Description Sube un archivo a S3 y lo asocia al usuario que lo subió.
 // @Tags Files
 // @Accept  mpfd
 // @Produce  json
@@ -25,7 +25,7 @@ type Form struct {
 // @Success 200 {object} responses.UploadSuccessResponse
 // @Failure 400 {object} responses.StandardResponse
 // @Failure 500 {object} responses.StandardResponse
-// @Router /files/{directory} [post]
+// @Router /{directory} [post]
 func Upload(c *gin.Context) {
 	directory := c.Param("directory")
 
