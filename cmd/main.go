@@ -2,12 +2,14 @@ package main
 
 import (
 	"XMPP-File-Server/docs"
+	"XMPP-File-Server/internal/configs"
 	_ "XMPP-File-Server/internal/configs"
 	middlewares "XMPP-File-Server/internal/middleware"
 	"XMPP-File-Server/internal/routes"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"strings"
 )
 
 func CORS() gin.HandlerFunc {
@@ -36,7 +38,7 @@ func main() {
 	docs.SwaggerInfo.Title = "File server for XMPP chat"
 	docs.SwaggerInfo.Description = "Simple file server for storing attachments from XMPP chat"
 	docs.SwaggerInfo.Version = "0.1.0"
-	docs.SwaggerInfo.Host = "redes-markalbrand56.koyeb.app"
+	docs.SwaggerInfo.Host = strings.Split(configs.URL, "https://")[1]
 	docs.SwaggerInfo.BasePath = "/files"
 
 	// Routes
