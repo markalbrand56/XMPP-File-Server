@@ -17,6 +17,7 @@
     - [File access](#file-access)
   - [How to run](#how-to-run)
     - [Environment Variables](#environment-variables)
+  - [License](#license)
 
 ## Project Description
 
@@ -81,3 +82,7 @@ Before running the file server, you must set the following environment variables
 - `AWS_REGION`: The region of the AWS S3 Bucket.
 - `AWS_BUCKET`: The name of the AWS S3 Bucket.
 - `URL`: The URL of the file server. This is used to generate the URLs of the files uploaded to the bucket.
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
